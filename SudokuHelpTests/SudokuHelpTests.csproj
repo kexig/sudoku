@@ -56,8 +56,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SudokuGridTests.cs" />
-    <Compile Include="SudokuTileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

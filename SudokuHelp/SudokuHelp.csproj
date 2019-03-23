@@ -31,6 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -39,6 +41,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassicSudoku.cs" />
@@ -49,11 +52,19 @@
     <Compile Include="SudokuGrid.Designer.cs">
       <DependentUpon>SudokuGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="SudokuTile.cs" />
+    <Compile Include="SudokuTile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SudokuTile.Designer.cs">
+      <DependentUpon>SudokuTile.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SudokuGrid.resx">
       <DependentUpon>SudokuGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SudokuTile.resx">
+      <DependentUpon>SudokuTile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

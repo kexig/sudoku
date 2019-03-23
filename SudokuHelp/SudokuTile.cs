@@ -1,39 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace SudokuHelp
 {
-    public class SudokuTile
+    public partial class SudokuTile : UserControl
     {
-        public bool Fix;
-        public readonly int Row;
-        public readonly int Column;
-        public readonly int MaxValue;
-        private int _value;
+        public int Row;
+        public int Column;
 
-        public SudokuTile(int Row, int Column, int MaxValue)
+        public SudokuTile()
         {
-            this.Row = Row;
-            this.Column = Column;
-            this.MaxValue = MaxValue;
+            InitializeComponent();
+            Control.Maximum = 9;
+        }
+
+        public int Maximum
+        {
+            set { Control.Maximum = value; }
+            get { return (int)Control.Maximum; }
+        }
+
+        public bool Fix
+        {
+            set { Control.Enabled = !value; }
+            get { return !Control.Enabled; }
         }
 
         public int Value
         {
-            get { return _value; }
+            get { return (int)Control.Value; }
             set
             {
                 if (Fix)
                 {
                     throw new InvalidOperationException("Can't change value of a fixed SudokuTile");
                 }
-                if (value > MaxValue || value < 0)
-                { 
-                    throw new ArgumentOutOfRangeException("SudokuTile.Value is out of range");
-                }
-                _value = value;
+                Control.Value = value;
             }
         }
     }

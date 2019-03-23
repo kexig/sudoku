@@ -1533,7 +1533,7 @@ namespace Sudoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 521);
+            this.ClientSize = new System.Drawing.Size(772, 519);
             this.Controls.Add(this.Solve);
             this.Controls.Add(this.SudokuGrid);
             this.Margin = new System.Windows.Forms.Padding(2);
