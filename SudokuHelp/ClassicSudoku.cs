@@ -7,5 +7,20 @@ namespace SudokuHelp
 {
     public class ClassicSudoku
     {
+
+        public ClassicSudoku()
+        {
+
+        }
+
+        public void Populate(int[,] Template)
+        {
+
+        }
+
+        public void Solve()
+        {
+
+        }
     }
 }

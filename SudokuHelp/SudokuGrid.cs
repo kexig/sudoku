@@ -18,7 +18,7 @@ namespace SudokuHelp
             InitializeComponent();
         }
 
-        public void SetSudoku(int[,] Sudoku)
+        public void Populate(int[,] Sudoku)
         {
             for (int Row = 0; Row < Sudoku.GetLength(0); Row++)
             {
