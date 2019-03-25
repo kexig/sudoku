@@ -1,6 +1,6 @@
 ﻿namespace SudokuHelp
 {
-    partial class SudokuTile
+    partial class Tile
     {
         /// <summary> 
         /// Required designer variable.

@@ -90,25 +90,25 @@
     <Compile Include="ClassicSudoku.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SudokuFactory.cs" />
-    <Compile Include="SudokuGrid.cs">
+    <Compile Include="Grid9x9.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SudokuGrid.Designer.cs">
-      <DependentUpon>SudokuGrid.cs</DependentUpon>
+    <Compile Include="Grid9x9.Designer.cs">
+      <DependentUpon>Grid9x9.cs</DependentUpon>
     </Compile>
-    <Compile Include="SudokuTile.cs">
+    <Compile Include="Tile.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SudokuTile.Designer.cs">
-      <DependentUpon>SudokuTile.cs</DependentUpon>
+    <Compile Include="Tile.Designer.cs">
+      <DependentUpon>Tile.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SudokuGrid.resx">
-      <DependentUpon>SudokuGrid.cs</DependentUpon>
+    <EmbeddedResource Include="Grid9x9.resx">
+      <DependentUpon>Grid9x9.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SudokuTile.resx">
-      <DependentUpon>SudokuTile.cs</DependentUpon>
+    <EmbeddedResource Include="Tile.resx">
+      <DependentUpon>Tile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

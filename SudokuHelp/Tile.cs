@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace SudokuHelp
 {
-    public partial class SudokuTile : UserControl
+    public partial class Tile : UserControl
     {
         public int Row;
         public int Column;
 
-        public SudokuTile()
+        public Tile()
         {
             InitializeComponent();
             Control.Maximum = 9;

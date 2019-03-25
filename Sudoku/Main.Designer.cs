@@ -29,7 +29,7 @@ namespace Sudoku
         private void InitializeComponent()
         {
             this.Solve = new System.Windows.Forms.Button();
-            this.Grid = new SudokuHelp.SudokuGrid();
+            this.Grid = new SudokuHelp.Grid9x9();
             this.SuspendLayout();
             // 
             // Solve
@@ -65,7 +65,7 @@ namespace Sudoku
 
         #endregion
         private System.Windows.Forms.Button Solve;
-        private SudokuHelp.SudokuGrid Grid;
+        private SudokuHelp.Grid9x9 Grid;
     }
 }
 
