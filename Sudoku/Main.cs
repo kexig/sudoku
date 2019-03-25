@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SudokuHelp;
 
 // This is the code for your desktop app.
 // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
@@ -35,7 +36,9 @@ namespace Sudoku
 
         private void Solve_Click(object sender, EventArgs e)
         {
-
+            ClassicSudoku Sudoku = new ClassicSudoku(Grid.Value);
+            Sudoku.Solve();
+            Grid.Populate(Sudoku.Value);
         }
     }
 }
