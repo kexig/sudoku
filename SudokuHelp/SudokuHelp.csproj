@@ -96,6 +96,7 @@
     <Compile Include="Grid9x9.Designer.cs">
       <DependentUpon>Grid9x9.cs</DependentUpon>
     </Compile>
+    <Compile Include="SudokuTile.cs" />
     <Compile Include="Tile.cs">
       <SubType>UserControl</SubType>
     </Compile>
