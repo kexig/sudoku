@@ -89,7 +89,6 @@
   <ItemGroup>
     <Compile Include="ClassicSudoku.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SudokuFactory.cs" />
     <Compile Include="Grid9x9.cs">
       <SubType>UserControl</SubType>
     </Compile>

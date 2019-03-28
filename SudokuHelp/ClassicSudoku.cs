@@ -13,6 +13,7 @@ namespace SudokuHelp
         private List<IGrouping<int, SudokuTile>> GroupByColumn;
         private List<IGrouping<int, SudokuTile>> GroupByRow;
         private List<IEnumerable<SudokuTile>> GroupBy3x3 = new List<IEnumerable<SudokuTile>>();
+        private int MiniSquareSize = 3;
 
 
         private void CreateTiles(int[,] Template)
@@ -32,9 +33,7 @@ namespace SudokuHelp
             GroupByRow = Tiles.GroupBy(tile => tile.Row).ToList();
             Columns = GroupByColumn.Count();
             Rows = GroupByRow.Count();
-            //Rows = Tiles.Max(tile => tile.Row) + 1;
 
-            int MiniSquareSize = 3;
             GroupBy3x3.Clear();
             for (int Row = 0; Row < (Rows / MiniSquareSize); Row++)
             {
@@ -70,14 +69,105 @@ namespace SudokuHelp
             CreateTiles(Template);
         }
 
-        public void Populate()
-        {
-
-        }
-
         public void Solve()
         {
+            List<SudokuTile> TilesBackup = Tiles;
+            int NrOfTiles = Tiles.Count();
+            int i = 0;
+            while (!Verify())
+            {
+                if (Tiles[i].Fix)
+                {
+                    if(i >= Tiles.Count())
+                    {
+                        Back(ref i);
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                else
+                {
+                    if(!Increment(ref i))
+                    {
+                        Back(ref i);
+                    }
+                }
+            }
+        }
 
+        private bool Increment(ref int i)
+        {
+            List<int> Moves = PossibleMoves(Tiles[i]);
+            if (Moves.Count() > 0)
+            {
+                Tiles[i].Value = Moves[0];
+                i++;
+                return true;
+            }
+            return false;
+        }
+
+        private void Back (ref int i)
+        {
+            if (!Tiles[i].Fix) { Tiles[i].Value = 0; }
+            i--;
+            if (Tiles[i].Fix)
+            {
+                Back(ref i);
+            }
+            else
+            {
+                List<int> Moves = PossibleMoves(Tiles[i]);
+                if (Moves.Count() > 0)
+                {
+                    Tiles[i].Value = Moves[0];
+                    i++;
+                }
+                else
+                {
+                    Back(ref i);
+                }
+            }
+        }
+
+        private List<int> PossibleMoves(SudokuTile Tile)
+        {
+            int Row = Tile.Row;
+            int Column = Tile.Column;
+            List<int> Used = new List<int>();
+            List<int> UnUsed = new List<int>();
+            foreach (SudokuTile tile in GroupByColumn[Column])
+            {
+                Used.Add(tile.Value);
+            }
+            
+            foreach (SudokuTile tile in GroupByRow[Row])
+            {
+                Used.Add(Tile.Value);
+            }
+
+            foreach (var Box in GroupBy3x3)
+            {
+                if(Box.Any(tile => tile == Tile)){
+                    foreach(SudokuTile tile in Box)
+                    {
+                        Used.Add(tile.Value);
+                    }
+                    break;
+                }
+            }
+
+            for (int i=1; i <= Tile.MaxValue; i++)
+            {
+                if (!Used.Contains(i) && i > Tile.Value)
+                {
+                    UnUsed.Add(i);
+                }
+            }
+
+            return UnUsed;
         }
 
         public bool Verify()

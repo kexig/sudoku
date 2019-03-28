@@ -38,7 +38,15 @@ namespace Sudoku
         {
             ClassicSudoku Sudoku = new ClassicSudoku(Grid.Value);
             Sudoku.Solve();
-            Grid.Populate(Sudoku.Value);
+            if (Sudoku.Verify())
+            {
+                Grid.Populate(Sudoku.Value);
+            }
+            else
+            {
+                MessageBox.Show("The sudoku could not be solved.");
+            }
+            
         }
     }
 }
